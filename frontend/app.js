@@ -1,4 +1,6 @@
-const API_URL = "http://<ALB-DNS>/tasks";
+// const API_URL = "http://simple-flask-app-prod-alb-1872300889.us-east-1.elb.amazonaws.com/tasks";
+const API_URL = "http://simple-flask-app-prod-alb-1872300889.us-east-1.elb.amazonaws.com/tasks";
+
 
 async function createTask() {
   const title = document.getElementById("taskInput").value;

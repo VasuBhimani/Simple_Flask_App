@@ -1,11 +1,13 @@
+import os
 from flask import Flask, request, jsonify
 import boto3
 import uuid
 
 app = Flask(__name__)
 
+TABLE_NAME = os.environ.get('DYNAMODB_TABLE', 'Tasks')  # default = Tasks
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-table = dynamodb.Table('Tasks')
+table = dynamodb.Table(TABLE_NAME)
 
 # CREATE
 @app.route('/tasks', methods=['POST'])
@@ -50,4 +52,4 @@ def delete_task(task_id):
     return jsonify({"message": "Task deleted"})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=5000)
