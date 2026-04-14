@@ -1,14 +1,13 @@
 // const API_URL = "http://simple-flask-app-prod-alb-1872300889.us-east-1.elb.amazonaws.com/tasks";
-const API_URL = "http://simple-flask-app-prod-alb-1872300889.us-east-1.elb.amazonaws.com/tasks";
-
+const API_URL = "http://simple-flask-app-prod-alb-1185848334.us-east-1.elb.amazonaws.com/tasks";
 
 async function createTask() {
   const title = document.getElementById("taskInput").value;
 
   await fetch(API_URL, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ title })
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title }),
   });
 
   loadTasks();
@@ -21,7 +20,7 @@ async function loadTasks() {
   const list = document.getElementById("taskList");
   list.innerHTML = "";
 
-  data.forEach(task => {
+  data.forEach((task) => {
     const li = document.createElement("li");
     li.innerText = task.title;
 
